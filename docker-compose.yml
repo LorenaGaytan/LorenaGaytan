@@ -1,0 +1,26 @@
+version: '3.7'
+services:
+  schoolmanager: 
+    container_name: schoolmanager
+    image: schoolmanager:v1
+    ports:   
+      - 8080:8080
+    restart: always
+    networks: 
+      - tecgurus-network
+    depends_on:
+      - mysql
+  mysql:
+    container_name: mysql
+    image: mysql:8.0
+    ports:
+      - 3306:3306
+    volumes:
+      - ./volumes/mysql:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: 12345678
+      MYSQL_DATABASE: SchoolManager
+    networks:
+      - tecgurus-network
+networks:
+    tecgurus-network:

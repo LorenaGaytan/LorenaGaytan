@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><templates><template autoinsert="true" context="java" deleted="false" description="for UPDATE, DELETE and INSERT operations" enabled="true" name="dao_execute_update">Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		try {
+			connection = connectionFactory.conectar();
+			if (connection != null) {
+				//TODO: Create the query
+				/*----------------------*
+				 *-- Create the query --*
+				 *----------------------*/
+				String query = "";
+
+				preparedStatement = connection.prepareStatement(query);
+				//TODO: Insert parametters if is necesary
+				/*---------------------------------------*
+				 *-- Insert parametters if is necesary --*
+				 *---------------------------------------*/
+				preparedStatement.executeUpdate();
+			}
+		} catch (ClassNotFoundException | SQLException exception) {
+			throw new DAOException("DAO Exception: " + exception.getMessage(), exception);
+		} finally {
+			try {
+				connection.close();
+				preparedStatement.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+				throw new DAOException("DAO Exception: " + e.getMessage(), e);
+			}
+
+		}</template><template autoinsert="true" context="java" deleted="false" description="Generate the basic structure to get a list of entities from SQL database with JDBC" enabled="true" name="dao_get_many">List&lt;${entity}&gt; ${listName} = new ArrayList&lt;&gt;();
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet rs = null;
+
+		try {
+			connection = connectionFactory.conectar();
+
+			if (connection != null) {
+				//TODO: Create the query
+				/*----------------------*
+				 *-- Create the query --*
+				 *----------------------*/
+				String query = "";
+				preparedStatement = connection.prepareStatement(query);
+
+				//TODO: Insert parametters to statement if is necesary
+				/*---------------------------------------*
+				 *-- Insert parametters if is necesary --*
+				 *---------------------------------------*/
+				rs = preparedStatement.executeQuery();
+
+				if (rs != null) {
+					while (rs.next()) {
+						${entity} ${entityObject} = new ${entity}();
+						//TODO: Fill the entities from ResultSet
+						/*--------------------------------------*
+				 		 *-- Fill the entities from ResultSet --*
+				 		 *--------------------------------------*/
+						${listName}.add(${entityObject});
+					}
+				}
+			}
+
+		} catch (ClassNotFoundException | SQLException exception) {
+			throw new DAOException("DAO Exception: " + exception.getMessage(), exception);
+		} finally {
+			try {
+				connection.close();
+				preparedStatement.close();
+				rs.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+				throw new DAOException("DAO Exception: " + e.getMessage(), e);
+			}
+		}
+
+		return ${listName};
+</template><template autoinsert="true" context="java" deleted="false" description="Generate the basic structure to get one entity from SQL database with JDBC" enabled="true" name="dao_get_one">${entity} ${entityObject} = null;
+		
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet rs = null;
+
+		try {
+			connection = connectionFactory.conectar();
+
+			if (connection != null) {
+				//TODO: Add query
+				/*---------------*
+				 *-- Add query --*
+	 			 *---------------*/
+				String query = "";
+				
+				preparedStatement = connection.prepareStatement(query);
+				//TODO: Add parameters of the query
+				/*---------------------------------*
+				 *-- Add parameters of the query --*
+				 *---------------------------------*/
+				rs = preparedStatement.executeQuery();
+
+				if (rs != null) {
+					while (rs.next()) {
+						${entityObject} = new ${entity}();
+						//TODO: Fill the entities from ResultSet
+						/*--------------------------------------*
+				 		 *-- Fill the entities from ResultSet --*
+				 		 *--------------------------------------*/
+					}
+				}
+			}
+		} catch (ClassNotFoundException | SQLException exception) {
+			throw new DAOException("DAO Exception: " + exception.getMessage(), exception);
+		} finally {
+			try {
+				connection.close();
+				preparedStatement.close();
+				rs.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+				throw new DAOException("DAO Exception: " + e.getMessage(), e);
+			}
+		}
+
+		return ${entityObject};</template></templates>

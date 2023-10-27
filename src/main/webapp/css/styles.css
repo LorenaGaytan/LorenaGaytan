@@ -1,0 +1,71 @@
+.main {
+    padding: 25px;
+}
+
+.main-form {
+    width: 60%;
+}
+
+.actions {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 25px 0;
+}
+
+.actions-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.actions-row > div {
+    margin-right: 15px;
+}
+
+.actions-row > a, .actions-row > form {
+    margin-right: 15px;
+}
+
+.student-info-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 25px;
+}
+
+.personal-info-container {
+    background-color: rgba(242, 242, 242, 0.5);
+    width: 30%;
+    padding-top: 15px;
+    padding-left: 15px;
+}
+
+.personal-info-title {
+    color: #00897b;
+    margin-bottom: 25px;
+}
+
+.personal-info-row {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+}
+
+.info-label {
+    margin-bottom: 3px;
+}
+
+.courses-info-container {
+    width: 60%;
+}
+
+.info-students-actions {
+    display: flex;
+    align-content: space-between;
+}
+
+.info-students-actions > form {
+    margin-left: 10px;
+}

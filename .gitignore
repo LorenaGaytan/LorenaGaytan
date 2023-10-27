@@ -1,0 +1,9 @@
+.settings
+target
+.classpath
+.project
+/build
+**/.DS_Store
+/volumes
+.vscode
+.idea
